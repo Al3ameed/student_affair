@@ -1,0 +1,61 @@
+.login-footer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  background-color: #343a4021;
+  color: #343a40;
+  border: 3px double #e7e8ea;
+}
+
+.filter-section {
+    padding: 15px;
+    background-color: #3f65d452;
+    margin-bottom: 15px;
+}
+.bg-blue {
+    background-color: #3f64d417;
+    border: 1px solid #446ad76e;
+}
+
+.student_photo{
+    margin: 10px auto 50px;
+    height: 150px;
+    width: 150px;
+    object-fit: contain;
+}
+.mandatory {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: #446ad7;
+    padding: 2px 19px;
+    border-radius: 0 0 8px;
+    color: #fff;
+}
+.optional {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: #abadb1;
+    padding: 2px 19px;
+    border-radius: 0 0 8px;
+    color: #fff;
+}
+.military-section {
+    display: none;
+}
+.bg-danger {
+   background-color: #e3342f70 !important
+}
+
+th , td {
+    text-align: center !important;
+}
+.f_m_state_c {
+    background-color: #2fe3651c !important;
+}
+.f_m_state_ic {
+    background-color: #e3352f1a !important;
+}
