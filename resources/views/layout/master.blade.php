@@ -3,7 +3,7 @@
 <head>
       @include('layout.header')
 </head>
-<body id="page-top">
+<body id="page-top" dir="rtl" style="text-align: right;">
 
     <!-- Page Wrapper -->
     <div id="wrapper">

@@ -25,12 +25,12 @@ class Report3Export implements FromCollection , WithMapping , WithHeadings ,With
     public function headings(): array
     {
         return [
-          'Student ID' ,
-          'Student Name' ,
-          'University Email' ,
-          'Level' ,
-          'Gender' ,
-          'Governorate'
+          'الرقم التعريفى' ,
+          'اسم الطالب' ,
+          'البريد الجامعى' ,
+          'المستوى' ,
+          'النوع' ,
+          'المحافظة'
         ];
     }
 
@@ -41,7 +41,7 @@ class Report3Export implements FromCollection , WithMapping , WithHeadings ,With
             $query->name,
             $query->university_email,
             $query->level,
-            $query->gender == "0" ? "Male" : "FeMale" ,
+            $query->gender == "0" ? "ذكر" : "انثي" ,
             $this->getGovernate($query->governorate)
         ];
     }

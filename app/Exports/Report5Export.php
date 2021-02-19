@@ -25,10 +25,10 @@ class Report5Export implements FromCollection , WithMapping , WithHeadings ,With
     public function headings(): array
     {
         return [
-            'Student ID' ,
-            'Student Name' ,
-            'University Email' ,
-            'Age'
+            'الرقم التعريفى' ,
+            'اسم الطالب' ,
+            'البريد الجامعى' ,
+            'العمر'
         ];
     }
 

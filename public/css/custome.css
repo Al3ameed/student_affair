@@ -59,3 +59,11 @@ th , td {
 .f_m_state_ic {
     background-color: #e3352f1a !important;
 }
+#accordionSidebar {
+    padding: 0 !important;
+}
+
+input , th , td , a , ul , li {
+    text-align: right !important;
+    direction: rtl !important;
+}

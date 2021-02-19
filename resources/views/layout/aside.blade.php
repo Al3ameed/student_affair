@@ -1,9 +1,9 @@
 <!-- Sidebar -->
-<ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar" style="margin-top: 70px;">
+<ul class="navbar-nav bg-gradient-primary  sidebar-dark accordion sidebar" id="accordionSidebar" style="margin-top: 70px;">
 
     <!-- Sidebar - Brand -->
     <a class="sidebar-brand d-flex align-items-center justify-content-center" href="home">
-      <div class="sidebar-brand-text mx-1"> SA DASHBOARD</div>
+      <div class="sidebar-brand-text mx-1"> لوحة تحكم شئون الطلاب</div>
     </a>
 
     <!-- Divider -->
@@ -13,15 +13,17 @@
     <li class="nav-item active">
       <a class="nav-link" href="{{ route('students.index') }}">
         <i class="fas fa-users "></i>
-        <span>students</span>
+        <span>الطلاب</span>
       </a>
     </li>
+
+
 
      <!-- Nav Item - Excellent Students -->
      <li class="nav-item active">
         <a class="nav-link" href="{{ route('excellent') }}">
             <i class="fas fa-file-export"></i>
-            <span> Excellent Students </span>
+            <span> تقرير - الاوائل </span>
         </a>
     </li>
 
@@ -29,7 +31,7 @@
     <li class="nav-item active">
         <a class="nav-link" href="{{ route('governorates') }}">
             <i class="fas fa-file-export"></i>
-            <span> Governorates </span>
+            <span> تقرير - المحافظات </span>
         </a>
     </li>
 
@@ -37,7 +39,7 @@
     <li class="nav-item active">
         <a class="nav-link" href="{{ route('military_education') }}">
             <i class="fas fa-file-export"></i>
-            <span> Military Education </span>
+            <span>تقرير - العسكريه </span>
         </a>
     </li>
 
@@ -45,7 +47,7 @@
     <li class="nav-item active">
         <a class="nav-link" href="{{ route('student_ages') }}">
             <i class="fas fa-file-export"></i>
-            <span> Student Ages </span>
+            <span> تقرير - الاعمار </span>
         </a>
     </li>
 
@@ -53,7 +55,7 @@
     <li class="nav-item active">
         <a class="nav-link" href="{{ route('foreign_students') }}">
             <i class="fas fa-file-export"></i>
-            <span> Foreign Students </span>
+            <span> تقرير - الوافدين </span>
         </a>
     </li>
 

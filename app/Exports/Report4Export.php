@@ -25,10 +25,10 @@ class Report4Export implements FromCollection , WithMapping , WithHeadings ,With
     public function headings(): array
     {
         return [
-          'Student ID' ,
-          'Student Name' ,
-          'University Email' ,
-          'Militart Education State'
+          'الرقم التعريفى' ,
+          'اسم الطالب' ,
+          'البريد الجامعى' ,
+          'حالة التربية العسكريه'
         ];
     }
 
@@ -38,7 +38,7 @@ class Report4Export implements FromCollection , WithMapping , WithHeadings ,With
             $query->id,
             $query->name,
             $query->university_email,
-            ($query->military_education == 1) ? "Completed" : "InCompleted"
+            ($query->military_education == 1) ? "تم اداء العسكريه" : "لم يؤدي التربية العسكريه"
         ];
     }
 

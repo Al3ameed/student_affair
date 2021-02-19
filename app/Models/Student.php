@@ -28,6 +28,11 @@ class Student extends Model
 
     public function getDobAttribute()
     {
-        return Carbon::parse($this->attributes['dob'])->age;
+        return $this->attributes['dob'];
+    }
+
+    public function getAgeAttribute()
+    {
+         return Carbon::parse($this->attributes['dob'])->age;
     }
 }

@@ -25,7 +25,7 @@ class Report1Export implements FromCollection , WithMapping , WithHeadings ,With
     public function headings(): array
     {
         return [
-          'Student ID' , 'Student Name' , 'University Email' , 'Level' , ' Ranked Year' , 'GPA'
+          'الرقم التعريفى' , 'اسم الطالب' , 'الريد الجامعى' , 'المستوي' , 'عام التقدير ' , '  التقدير السنوى '
         ];
     }
 

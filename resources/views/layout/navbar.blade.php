@@ -20,15 +20,15 @@
       <!-- Nav Item - User Information -->
       <li class="nav-item dropdown no-arrow">
         <a class="nav-link dropdown-toggle" href="home" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          <span class="mr-2 d-none d-lg-inline text-gray-600 small">Admin</span>
+          <span class="mr-2 d-none d-lg-inline text-gray-600 small">المدير</span>
         </a>
         <!-- Dropdown - User Information -->
         <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in p-3" >
             <form method="post" action="{{ route("logout") }}">
                 @csrf
                 <button type="submit" class="w-100 btn btn-outline-dark btn-block">
-                    <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
-                    Logout
+                    <i class="fas px-0 fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                     خروج
                 </button>
             </form>
         </div>

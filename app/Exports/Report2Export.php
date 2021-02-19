@@ -25,7 +25,7 @@ class Report2Export implements FromCollection , WithMapping , WithHeadings ,With
     public function headings(): array
     {
         return [
-          'Student ID' , 'Student Name' , 'Gender' , 'University Email'
+          'الرقم التعريفى' , 'اسم الطالب' , 'النوع' , 'البريد الجامعى'
         ];
     }
 
@@ -34,7 +34,7 @@ class Report2Export implements FromCollection , WithMapping , WithHeadings ,With
         return [
             $query->id,
             $query->name,
-            $query->gender == "0" ? "Male" : "FeMale" ,
+            $query->gender == "0" ? "ذكر" : "انثي" ,
             $query->university_email
         ];
     }

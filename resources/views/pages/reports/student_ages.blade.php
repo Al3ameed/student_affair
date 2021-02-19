@@ -3,7 +3,7 @@
 @section('body')
 
 <div class="header my-5">
-    <h3 class=" float-left"> Students Ages </h3>
+    <h3 class=" float-right"> اعمار الطلاب </h3>
     <div class="clearfix"></div>
 </div>
 
@@ -16,10 +16,10 @@
 <div class="filter-section bg-light px-0">
     <form method="get" action="" class="row col-12 mx-0 px-0 d-flex justify-content-start">
         <div class="col-md-4 sol-sm-6 p-0 col-sm-6 col-12">
-            <input value="{{ request("f_age")? request("f_age"):"" }}" class="form-control" name="f_age" placeholder="Age Greater Than or Equal" >
+            <input value="{{ request("f_age")? request("f_age"):"" }}" class="form-control" name="f_age" placeholder="العمر اكبر من او يساوى" >
         </div>
         <div class="col-md-4 sol-sm-6">
-            <button class="btn btn-outline-primary"> Search</button>
+            <button class="btn btn-outline-primary"> بحث</button>
         </div>
     </form>
 </div>
@@ -29,16 +29,16 @@
     <form method="get" class="col-12 text-right mb-3">
         <input type="hidden" name="excel" value="yes">
         <input type="hidden" name="f_age" value="{{ request("f_age") }}">
-        <button  type="submit" class="btn btn-success"> Export Excel  <i class="fas fa-file-csv ml-2"></i> </button>
+        <button  type="submit" class="btn btn-success"> طباعة التقرير  <i class="fas fa-file-csv ml-2"></i> </button>
     </form>
 
     <table class="table table-light table-striped table-hover">
     <thead>
         <th> # </th>
-        <th> ID </th>
-        <th> Name </th>
-        <th> Email </th>
-        <th> Age  </th>
+        <th> الرقم التعريفى </th>
+        <th> اسم الطالب </th>
+        <th> البريد الجامعى </th>
+        <th> العمر  </th>
     </thead>
     <tbody>
 

@@ -36,18 +36,18 @@
 
             <div class="form-group col-12">
                 <img alt="key logo" class="w-100" style="height: 100px; object-fit: contain;" src="{{ asset('images/static/key.png') }}" />
-                <h3> Student Affair System </h3>
+                <h3> نظام شئون الطلاب - تجريبى </h3>
             </div>
 
             <div class="form-group col-12 px-0">
-              <input required name="email" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Email">
+              <input required name="email" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="البريد الالكترونى">
             </div>
 
             <div class="form-group col-12 px-0">
-              <input required name="password" type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+              <input required name="password" type="password" class="form-control" id="exampleInputPassword1" placeholder="كلمة المرور">
             </div>
 
-            <button type="submit" class="btn btn-dark">Access to Dashboard</button>
+            <button type="submit" class="btn btn-dark">الدخول الى لوحة التحكم</button>
         </form>
 
 
