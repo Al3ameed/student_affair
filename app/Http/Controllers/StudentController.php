@@ -28,14 +28,16 @@ class StudentController extends Controller
     public function store (studentRequest $request) {
         try {
             $attributes = $request->all();
-            // SAVE Image First
-            $imageName = $this->uploadImage($request->img , $request , false);
-            $attributes['img'] =  $imageName;
+            if($request->img) {
+                // SAVE Image First
+                $imageName = $this->uploadImage($request->img , $request , false);
+                $attributes['img'] =  $imageName;
+            }
             // SAVE STUDENT DATA
             Student::Create($attributes);
-            return redirect()->back()->with(["message" => "Student Created Successfully."]);
+            return redirect()->back()->with(["message" => "تم اضافة الطالب بنجاح"]);
         } catch (\Exception $e) {
-            return redirect()->back()->withErrors(["error" => "Something went Wrong Pleas Try Again Later !!"]);
+            return redirect()->back()->withErrors(["error" => "حدث خطأ برجاء المحاولة مرة اخرى"]);
         }
     }
 
@@ -55,10 +57,9 @@ class StudentController extends Controller
             }
             // UPDATE STUDENT DATA
             $student->update($attributes);
-            return redirect()->back()->with(["message" => "Student Updated Successfully."]);
+            return redirect()->back()->with(["message" => "تم تحديث بيانات الطالب بنجاح"]);
         } catch (\Exception $e) {
-            dd($e->getMessage());
-            return redirect()->back()->withErrors(["error" => "Something went Wrong Pleas Try Again Later !!"]);
+            return redirect()->back()->withErrors(["error" => "حدث خطأ برجاء المحاولة مرة اخرى"]);
         }
     }
 
@@ -86,7 +87,7 @@ class StudentController extends Controller
                 'gpa' => $request->gpas[$index]
             ]);
         }
-        return redirect()->back()->with(["message" => "Student grades Updated Successfully."]);
+        return redirect()->back()->with(["message" => "تم تحديث درجات الطالب بنجاح"]);
     }
 
     public function uploadImage ($img , $request , $delete_old) {

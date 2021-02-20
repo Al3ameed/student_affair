@@ -38,7 +38,7 @@ class Report5Export implements FromCollection , WithMapping , WithHeadings ,With
             $query->id,
             $query->name,
             $query->university_email,
-            $query->dob,
+            $query->age,
         ];
     }
 

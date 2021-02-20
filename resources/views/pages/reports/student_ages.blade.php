@@ -48,7 +48,7 @@
                 <td> {{ $student->student_id }}  </td>
                 <td> {{ $student->name }}  </td>
                 <td> {{ $student->university_email }}  </td>
-                <td> {{ $student->dob }} </td>
+                <td> {{ $student->age }} </td>
             </tr>
             @empty
 

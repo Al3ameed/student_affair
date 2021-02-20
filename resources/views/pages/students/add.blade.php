@@ -65,8 +65,20 @@
 
         {{-- Qualification Year  --}}
         <div class="col-md-6 col-12 mb-3">
-            <label for="s_q_year"> سنه التخرج </label>
-            <input required value="{{ old('qualification_year') }}" id="s_q_year" type="number" class="form-control" name="qualification_year">
+            <div class="row col-12 mx-0 px-0">
+                <label for="s_q_year_f" class="col-12">  سنه التخرج  ( من - الى )</label>
+                <div class="col">
+                    {{-- Qualification Years --}}
+                    <input required placeholder="من" value="{{ old('qualification_year_from') }}" id="s_q_year_f" type="number"
+                        class="form-control" name="qualification_year_from">
+                </div>
+                <div class="col-1 btn btn-light text-center"> / </div>
+                <div class="col">
+                    {{-- Qualification Years --}}
+                    <input required placeholder="الى" value="{{ old('qualification_year_to') }}" id="s_q_year_t" type="number"
+                        class="form-control" name="qualification_year_to">
+                </div>
+            </div>
         </div>
 
         {{-- Grade  --}}
@@ -128,13 +140,13 @@
         {{-- University Email  --}}
         <div class="col-md-6 mb-3 col-12">
             <label for="s_u_main">البريد الجامعى  </label>
-            <input value="{{ old('university_email') }}" type="email" required id="s_u_main" class="form-control"  name="university_email">
+            <input value="{{ old('university_email') }}" type="email" id="s_u_main" class="form-control"  name="university_email">
         </div>
 
         {{-- Image  --}}
         <div class="col-md-6 mb-3 col-12">
             <label for="s_image"> الصورة </label>
-            <input value="{{ old('img') }}" type="file" onchange="document.getElementById('output').src = window.URL.createObjectURL(this.files[0])" required id="s_image" class="form-control"  name="img">
+            <input value="{{ old('img') }}" type="file" onchange="document.getElementById('output').src = window.URL.createObjectURL(this.files[0])" id="s_image" class="form-control"  name="img">
         </div>
 
     </div>
@@ -146,25 +158,25 @@
         {{-- Father Name  --}}
         <div class="col-md-6 col-12 mb-3">
             <label for="s_f_name"> اسم الاب</label>
-            <input value="{{ old('father_name') }}" required id="s_f_name" type="text"  class="form-control" name="father_name">
+            <input value="{{ old('father_name') }}"  id="s_f_name" type="text"  class="form-control" name="father_name">
         </div>
 
         {{-- Father Job  --}}
         <div class="col-md-6 col-12 mb-3">
             <label for="s_f_job">وظيفة الاب  </label>
-            <input value="{{ old('father_job') }}" required id="s_f_job" type="text"  class="form-control" name="father_job">
+            <input value="{{ old('father_job') }}"  id="s_f_job" type="text"  class="form-control" name="father_job">
         </div>
 
         {{-- Mother Name --}}
         <div class="col-md-6 col-12 mb-3">
             <label for="s_m_name">اسم الام</label>
-            <input value="{{ old('mother_name') }}" required id="s_m_name" type="text"  class="form-control" name="mother_name">
+            <input value="{{ old('mother_name') }}"  id="s_m_name" type="text"  class="form-control" name="mother_name">
         </div>
 
         {{-- Mother Job  --}}
         <div class="col-md-6 col-12 mb-3">
             <label for="s_m_job">وظيفة الام</label>
-            <input value="{{ old('mother_job') }}" required id="s_m_job" type="text"  class="form-control" name="mother_job">
+            <input value="{{ old('mother_job') }}"  id="s_m_job" type="text"  class="form-control" name="mother_job">
         </div>
 
         {{-- Address --}}

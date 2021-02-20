@@ -14,7 +14,8 @@ class Student extends Model
     protected $table = "students";
 
     protected $fillable = [
-        'id', 'name', 'dob', 'qualification', 'qualification_year', 'level',
+        'id', 'name', 'dob', 'qualification', 'qualification_year_from' ,
+        'qualification_year_to' , 'level',
         'secondry_grade', 'gender', 'status', 'nationality', 'national_id',
         'student_number', 'university_email', 'student_id', 'img', 'father_name',
         'mother_name', 'father_job', 'mother_job', 'Address', 'governorate',

@@ -24,6 +24,7 @@
     height: 150px;
     width: 150px;
     object-fit: contain;
+    border: 1px solid #ddd !important;
 }
 .mandatory {
     position: absolute;

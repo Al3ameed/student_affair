@@ -24,7 +24,9 @@ class CreateStudentsTable extends Migration
                             3 -> Arrivals ,
                             4 -> Stem ,
                             5 -> Others");
-            $table->integer("qualification_year");
+            $table->integer("qualification_year_from")->nullable()->default(null);
+            $table->integer("qualification_year_to")->nullable()->default(null);
+
             $table->float("secondry_grade");
             $table->boolean("gender")->default("0")->comment(" 0 -> Male , 1 -> Female");
             $table->boolean("status")->default("1")->comment("1 -> active , 0 -> inactive");
@@ -33,13 +35,13 @@ class CreateStudentsTable extends Migration
             $table->integer("national_id");
             $table->integer("student_number");
             $table->integer("level");
-            $table->string("university_email")->unique();
+            $table->string("university_email")->unique()->nullable()->default(null);
             $table->integer("student_id")->unique();
-            $table->string("img");
-            $table->string("father_name");
-            $table->string("mother_name");
-            $table->string("father_job");
-            $table->string("mother_job");
+            $table->string("img")->nullable()->default(null);
+            $table->string("father_name")->nullable()->default(null);
+            $table->string("mother_name")->nullable()->default(null);
+            $table->string("father_job")->nullable()->default(null);
+            $table->string("mother_job")->nullable()->default(null);
             $table->text("Address");
             $table->integer("governorate");
 
