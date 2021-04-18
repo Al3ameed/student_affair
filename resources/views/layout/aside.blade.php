@@ -2,7 +2,7 @@
 <ul class="navbar-nav bg-gradient-primary  sidebar-dark accordion sidebar" id="accordionSidebar" style="margin-top: 70px;">
 
     <!-- Sidebar - Brand -->
-    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="home">
+    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{ route('home') }}">
       <div class="sidebar-brand-text mx-1"> لوحة تحكم شئون الطلاب</div>
     </a>
 
