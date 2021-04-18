@@ -29,13 +29,16 @@ class studentRequest extends FormRequest
                     'dob' => 'required|date',
 
                     'qualification' => 'required|numeric|between:0,5',
-                    'qualification_year_from' => 'required|digits:4|integer|min:2000|max:'.(date('Y')+1),
-                    'qualification_year_to' => 'required|digits:4|integer|min:2000|max:'.(date('Y')+1),
+                    'qualification_year' => 'digits:4|integer|min:2000|max:'.(date('Y')+1),
                     'secondry_grade' => 'required|numeric',
 
                     'gender' => 'required|boolean',
                     'status' => 'required|boolean',
                     'nationality' => 'required|boolean',
+                    'religion' => 'required|boolean',
+                    'foreign_nationality' => 'string|nullable',
+                    'medical_exam' => 'required|boolean',
+
                     'national_id' => 'required|numeric|unique:students,national_id',
                     'student_number' => 'required|numeric|unique:students,student_number',
                     'university_email' => 'email:rfc,dns|unique:students,university_email|nullable',
@@ -55,6 +58,10 @@ class studentRequest extends FormRequest
                     'military_date' => 'date|nullable',
                     'military_number' => 'numeric|nullable',
                     'military_education' => 'required|boolean',
+
+                    'pob' => 'required|string',
+                    'civil_registry' => 'required|string',
+                    'secondry_school' => 'required|string'
                 ];
                 break;
             case 'PUT':
@@ -66,13 +73,15 @@ class studentRequest extends FormRequest
                     'dob' => 'date',
                     'qualification' => 'numeric|between:0,5',
                     'level' => "integer|between:1,4",
-                    'qualification_year_from' => 'digits:4|integer|min:2000|max:'.(date('Y')+1),
-                    'qualification_year_to' => 'digits:4|integer|min:2000|max:'.(date('Y')+1),
+                    'qualification_year' => 'digits:4|integer|min:2000|max:'.(date('Y')+1),
                     'secondry_grade' => 'numeric',
 
                     'gender' => 'boolean',
                     'status' => 'boolean',
                     'nationality' => 'boolean',
+                    'religion' => 'boolean',
+                    'foreign_nationality' => 'string|nullable',
+                    'medical_exam' => 'boolean',
                     'national_id' => 'numeric|unique:students,national_id,' . $this->student,
                     'student_number' => 'numeric|unique:students,student_number,' . $this->student,
                     'university_email' => 'email:rfc,dns|nullable|unique:students,university_email,' . $this->student,
@@ -90,6 +99,10 @@ class studentRequest extends FormRequest
                     'military_date' => 'date|nullable',
                     'military_number' => 'numeric|nullable',
                     'military_education' => 'boolean',
+
+                    'pob' => 'string',
+                    'civil_registry' => 'string',
+                    'secondry_school' => 'string'
                 ];
                 break;
             default:

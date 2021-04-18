@@ -13,5 +13,23 @@
 <script src="{{asset('js/jquery.js')}}"></script>
 <script src="{{asset('js/sb-admin-2.min.js')}}"></script>
 
+{{-- load perview when image not exists  --}}
+<script>
+
+    function  corruptedImage (e) {
+        image = e.target;
+        image.removeEventListener('error', corruptedImage);
+        image.src = "https://dummyimage.com/150x150/e8ecf8/050505.png&text=++";
+    }
+
+
+    document.querySelectorAll('img').forEach(img => {
+        if (img.naturalWidth === 0) {
+            img.addEventListener('error', corruptedImage);
+            img.src = img.src;
+        }
+    });
+
+</script>
 
 

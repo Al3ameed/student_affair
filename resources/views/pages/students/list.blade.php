@@ -83,8 +83,15 @@
                         <a href="students/{{$student->id}}/manage-grades">
                             <i class="fas fa-graduation-cap text-dark"></i>
                         </a>
-                    </span class="mx-1">
-                    <span> <a onclick="setSelectedId({{ $student->id }})" style="cursor: pointer;" data-toggle="modal" data-target="#DeleteModal"><i class="fa text-danger fa-trash cursor" aria-hidden="true"></i> </a></span>
+                    </span>
+
+                    <span class="mx-1">
+                        <a href="students/{{$student->id}}/manage-fees">
+                            <i class="fas fa-money-bill  text-dark  "></i>
+                        </a>
+                    </span>
+
+                    <span class="mx-1"> <a onclick="setSelectedId({{ $student->id }})" style="cursor: pointer;" data-toggle="modal" data-target="#DeleteModal"><i class="fa text-danger fa-trash cursor" aria-hidden="true"></i> </a></span>
                 </td>
             </tr>
         @endforeach

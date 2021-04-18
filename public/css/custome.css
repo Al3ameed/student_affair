@@ -10,61 +10,78 @@
 }
 
 .filter-section {
-    padding: 15px;
-    background-color: #3f65d452;
-    margin-bottom: 15px;
+  padding: 15px;
+  background-color: #3f65d452;
+  margin-bottom: 15px;
 }
+
 .bg-blue {
-    background-color: #3f64d417;
-    border: 1px solid #446ad76e;
+  background-color: #3f64d417;
+  border: 1px solid #446ad76e;
 }
 
-.student_photo{
-    margin: 10px auto 50px;
-    height: 150px;
-    width: 150px;
-    object-fit: contain;
-    border: 1px solid #ddd !important;
+.student_photo {
+  margin: 10px auto 50px;
+  height: 150px;
+  width: 150px;
+  -o-object-fit: contain;
+     object-fit: contain;
+  border: 1px solid #ddd !important;
 }
+
 .mandatory {
-    position: absolute;
-    top: 0;
-    left: 0;
-    background-color: #446ad7;
-    padding: 2px 19px;
-    border-radius: 0 0 8px;
-    color: #fff;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: #446ad7;
+  padding: 2px 19px;
+  border-radius: 0 0 8px;
+  color: #fff;
 }
+
 .optional {
-    position: absolute;
-    top: 0;
-    left: 0;
-    background-color: #abadb1;
-    padding: 2px 19px;
-    border-radius: 0 0 8px;
-    color: #fff;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: #abadb1;
+  padding: 2px 19px;
+  border-radius: 0 0 8px;
+  color: #fff;
 }
+
 .military-section {
-    display: none;
+  display: none;
 }
+
 .bg-danger {
-   background-color: #e3342f70 !important
+  background-color: #e3342f70 !important;
 }
 
-th , td {
-    text-align: center !important;
+th, td {
+  text-align: center !important;
 }
+
 .f_m_state_c {
-    background-color: #2fe3651c !important;
-}
-.f_m_state_ic {
-    background-color: #e3352f1a !important;
-}
-#accordionSidebar {
-    padding: 0 !important;
+  background-color: #2fe3651c !important;
 }
 
-input , th , td , a , ul , li {
-    text-align: right !important;
-    direction: rtl !important;
+.f_m_state_ic {
+  background-color: #e3352f1a !important;
+}
+
+#accordionSidebar {
+  padding: 0 !important;
+}
+
+input, th, td, a, ul, li {
+  text-align: right !important;
+  direction: rtl !important;
+}
+
+.hide {
+  display: none;
+}
+
+a:hover {
+  text-decoration: none !important;
 }

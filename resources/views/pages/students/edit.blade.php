@@ -32,12 +32,14 @@
 <form action="{{ route("students.update" , $student->id) }}" method="post" enctype="multipart/form-data">
     @csrf
     @method("PUT")
+
     {{-- Student Data  --}}
     <div class="row mx-0 bg-blue p-3  d-flex position-relative">
         <span class="mandatory"> * مطلوب </span>
         <div class="col-12 text-center">
-            <img class="student_photo" onerror="onImgError(this)" src="{{ URL::to('/images/students')."/" .$student->img }}" id="output">
+            <img class="student_photo" onerror="corruptedImage(this)" src="{{ URL::to('/images/students')."/" .$student->img }}" id="output">
         </div>
+
         {{-- Full Name  --}}
         <div class="col-md-6 col-12 mb-3">
             <label for="s_name">الاسم بالكامل </label>
@@ -56,6 +58,21 @@
             <input required id="s_date" value="{{ $student->dob }}" type="date" class="form-control" name="dob">
         </div>
 
+        {{-- POB --}}
+        <div class="col-md-6 col-12 mb-3">
+            <label for="pob"> جهة الميلاد </label>
+            <input required id="pob" value="{{ $student->pob }}" type="text" class="form-control" name="pob">
+        </div>
+
+        {{-- Gender  --}}
+        <div class="col-md-6 mb-3 col-12">
+            <label for="s_gender"> النوع </label>
+            <select  required id="s_gender" class="form-control"  name="gender">
+                <option {{ $student->gender == "0" ? "selected": "" }} value="0"> ذكر</option>
+                <option {{ $student->gender == "1" ? "selected": "" }} value="1"> انثى</option>
+            </select>
+        </div>
+
         {{-- Qualification --}}
         <div class="col-md-6 col-12 mb-3">
             <label for="s_qualification"> المؤهل </label>
@@ -71,34 +88,42 @@
 
         {{-- Qualification Year  --}}
         <div class="col-md-6 col-12 mb-3">
-            <div class="row col-12 mx-0 px-0">
-                <label for="s_q_year_f" class="col-12">  سنه التخرج  ( من - الى )</label>
-                <div class="col">
-                    {{-- Qualification Years --}}
-                    <input required placeholder="من" value="{{ $student->qualification_year_from}}" id="s_q_year_f" type="number"
-                        class="form-control" name="qualification_year_from">
-                </div>
-                <div class="col-1 btn btn-light text-center"> / </div>
-                <div class="col">
-                    {{-- Qualification Years --}}
-                    <input required placeholder="الى" value="{{ $student->qualification_year_to}}" id="s_q_year_t" type="number"
-                        class="form-control" name="qualification_year_to">
-                </div>
+            <label for="s_q_year" class="col-12">   سنه التخرج من الثانوية</label>
+            <div class="col">
+                {{-- Qualification Years --}}
+                <input required placeholder="عام التخرج من المرحلة قبل الجامعيه" value="{{ $student->qualification_year}}" id="s_q_year" type="number"
+                    class="form-control" name="qualification_year">
             </div>
         </div>
 
         {{-- Grade  --}}
         <div class="col-md-6 col-12 mb-3">
             <label for="s_h_grade">  درجة المؤهل قبل الجامعى </label>
-            <input value="{{ $student->secondry_grade }}" min="1" required id="s_h_grade" type="number" class="form-control" name="secondry_grade">
+            <input value="{{ $student->secondry_grade }}" min="1" step="0.01" required id="s_h_grade" type="number" class="form-control" name="secondry_grade">
         </div>
 
-        {{-- Gender  --}}
-        <div class="col-md-6 mb-3 col-12">
-            <label for="s_gender"> النوع </label>
-            <select  required id="s_gender" class="form-control"  name="gender">
-                <option {{ $student->gender == "0" ? "selected": "" }} value="0"> ذكر</option>
-                <option {{ $student->gender == "1" ? "selected": "" }} value="1"> انثى</option>
+        {{-- Secondry School  --}}
+        <div class="col-md-6 col-12 mb-3">
+            <label for="secondry_school"> المدرسة الثانوية </label>
+            <input value="{{ $student->secondry_school }}"  required id="secondry_school" type="text" class="form-control" name="secondry_school">
+        </div>
+
+        {{-- Medical Exam  --}}
+        <div class="col-md-6 col-12 mb-3">
+            <label for="medical_exam"> الكشف الطبى </label>
+            <select class="form-control" id="medical_exam"  name="medical_exam">
+                <option {{ $student->medical_exam == "1" ? "selected": "" }} value="1"> لائق</option>
+                <option {{ $student->medical_exam == "0" ? "selected": "" }} value="0"> غير لائق</option>
+            </select>
+        </div>
+
+
+        {{-- religion Exam  --}}
+        <div class="col-md-6 col-12 mb-3">
+            <label for="religion"> الديانه </label>
+            <select  class="form-control" id="religion"  name="religion">
+                <option {{ $student->religion == "1" ? "selected": "" }} value="1"> مسلم</option>
+                <option {{ $student->religion == "0" ? "selected": "" }} value="0"> مسيحى</option>
             </select>
         </div>
 
@@ -122,25 +147,22 @@
             </select>
         </div>
 
-        {{-- Nationality  --}}
-        <div class="col-md-6 mb-3 col-12">
-            <label for="s_nationality"> الجنسيه </label>
-            <select value="{{ $student->nationality }}" required id="s_nationality" class="form-control"  name="nationality">
-                <option value="0" selected> مصرى</option>
-                <option value="1"> اجنبى</option>
-            </select>
-        </div>
-
-        {{-- National ID  --}}
-        <div class="col-md-6 mb-3 col-12">
-            <label for="s_national_id">الرقم القومى</label>
-            <input value="{{ $student->national_id }}" type="number" required id="s_national_id" class="form-control"  name="national_id">
-        </div>
-
-        {{-- Phone Number  --}}
-        <div class="col-md-6 mb-3 col-12">
+         {{-- Phone Number  --}}
+         <div class="col-md-6 mb-3 col-12">
             <label for="s_number"> رقم الهاتف</label>
             <input value="{{ $student->student_number }}" type="number" required id="s_number" class="form-control"  name="student_number">
+        </div>
+
+         {{-- National ID  --}}
+         <div class="col-md-6 mb-3 col-12">
+            <label for="national_id">الرقم القومى</label>
+            <input value="{{ $student->national_id }}" type="number" required id="national_id" class="form-control"  name="national_id">
+        </div>
+
+         {{-- civil registry --}}
+         <div class="col-md-6 mb-3 col-12">
+            <label for="civil_registry"> السجل المدنى </label>
+            <input value="{{ $student->civil_registry }}" type="text" required id="civil_registry" class="form-control"  name="civil_registry">
         </div>
 
         {{-- University Email  --}}
@@ -153,6 +175,23 @@
         <div class="col-md-6 mb-3 col-12">
             <label for="s_image"> الصورة </label>
             <input type="file" onchange="document.getElementById('output').src = window.URL.createObjectURL(this.files[0])" id="s_image" class="form-control"  name="img">
+        </div>
+
+
+        {{-- Nationality  --}}
+        <div class="col-12 row mx-0 mb-3 col-12">
+            <div class="col-md-6">
+                <label for="s_nationality"> الجنسيه </label>
+                <select onchange="natioanlity_change(this)" required id="s_nationality" class="form-control"  name="nationality">
+                    <option value="0" {{ $student->nationality == "0" ? "selected": "" }}> مصرى</option>
+                    <option value="1" {{ $student->nationality == "1" ? "selected": "" }}> اجنبى</option>
+                </select>
+            </div>
+
+            <div class="col-md-6 {{ $student->nationality == "0" ? 'hide' : '' }}" id="foreign_nationality">
+                <label for="foreign_nationality_section"> اسم البلد الأجبنبى </label>
+                <input value="{{ $student->foreign_nationality }}" type="text" id="foreign_nationality_section" class="form-control"  name="foreign_nationality">
+            </div>
         </div>
 
     </div>
@@ -297,11 +336,15 @@
             document.getElementsByClassName("military-section")[1].style.display = "none";
         }
     }
-    function onImgError(source) {
-        source.src =  "https://dummyimage.com/150x150/e8ecf8/050505.png&text=++";
-        // disable onerror to prevent endless loop
-        source.onerror = "";
-        return true;
+
+    // when change militart Status
+    function natioanlity_change (status) {
+        var state = document.getElementById("s_nationality").value;
+        if (state == 1) {
+            document.getElementById("foreign_nationality").style.display = "block";
+        } else {
+            document.getElementById("foreign_nationality").style.display = "none";
+        }
     }
 </script>
 @endsection

@@ -14,8 +14,9 @@ class Student extends Model
     protected $table = "students";
 
     protected $fillable = [
-        'id', 'name', 'dob', 'qualification', 'qualification_year_from' ,
-        'qualification_year_to' , 'level',
+        'id', 'name', 'dob', 'qualification', 'qualification_year' ,
+        'secondry_school' , 'religion' , 'medical_exam' , 'level',
+        'civil_registry' , 'pob' , 'foreign_nationality' ,
         'secondry_grade', 'gender', 'status', 'nationality', 'national_id',
         'student_number', 'university_email', 'student_id', 'img', 'father_name',
         'mother_name', 'father_job', 'mother_job', 'Address', 'governorate',
@@ -35,5 +36,9 @@ class Student extends Model
     public function getAgeAttribute()
     {
          return Carbon::parse($this->attributes['dob'])->age;
+    }
+
+    public function fees() {
+        return $this->hasMany(student_fees::class , "student_id" , "id");
     }
 }

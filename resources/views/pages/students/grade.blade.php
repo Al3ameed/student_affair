@@ -80,7 +80,7 @@
     }
     function deleteGradeSections() {
         let sections = document.getElementsByClassName("grade-section");
-        if(sections.length > 1)  { sections[0].remove(); }
+        if(sections.length >= 1)  { sections[sections.length - 1].remove(); }
     }
 </script>
 @endsection

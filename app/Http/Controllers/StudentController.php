@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\studentRequest;
 use App\Models\Student;
+use App\Models\student_fees;
 use App\Models\student_grade;
 use Illuminate\Http\Request;
 
@@ -73,21 +74,57 @@ class StudentController extends Controller
 
     public function update_grades(Request $request ,$id) {
         $request->validate([
-            'years' => 'required|array' ,
+            'years' => 'array' ,
             'years.*' => 'required|numeric|digits:4' ,
-            'gpas' => 'required|array' ,
+            'gpas' => 'array' ,
             'gpas.*' => 'required|numeric|min:.1|max:4' ,
         ]);
         $student = Student::findOrFail($id);
         $student->grades()->delete();
-        foreach($request->years as $index=>$key) {
-            student_grade::Create([
-                'student_id' => $id ,
-                'year' => $request->years[$index] ,
-                'gpa' => $request->gpas[$index]
-            ]);
+        if($request->years) {
+            foreach($request->years as $index=>$key) {
+                student_grade::Create([
+                    'student_id' => $id ,
+                    'year' => $request->years[$index] ,
+                    'gpa' => $request->gpas[$index]
+                ]);
+            }
         }
         return redirect()->back()->with(["message" => "تم تحديث درجات الطالب بنجاح"]);
+    }
+
+    public function fees($id) {
+        $student = Student::findOrFail($id);
+        return view('pages.students.fees' , [
+            'fees' => $student->fees ,
+            'id' => $id
+        ]);
+    }
+
+    public function update_fees(Request $request ,$id) {
+        $request->validate([
+            'amount' => 'array' ,
+            'amount.*' => 'required|numeric' ,
+
+            'date' => 'array' ,
+            'date.*' => 'required|date' ,
+
+            'voucher_number' => 'array' ,
+            'voucher_number.*' => 'required|string' ,
+        ]);
+        $student = Student::findOrFail($id);
+        $student->fees()->delete();
+        if($request->date) {
+            foreach($request->date as $index=>$key) {
+                student_fees::Create([
+                    'student_id' => $id ,
+                    'amount' => $request->amount[$index] ,
+                    'date' => $request->date[$index] ,
+                    'voucher_number' => $request->voucher_number[$index]
+                ]);
+            }
+        }
+        return redirect()->back()->with(["message" => "تم تحديث المعاملات المالية للطالب بنجاح"]);
     }
 
     public function uploadImage ($img , $request , $delete_old) {
@@ -105,7 +142,7 @@ class StudentController extends Controller
         if($request->f_name && $request->f_name != null) { $filter[] = ['name' , 'like' , '%' .$request->f_name. '%'];}
         if($request->f_id && $request->f_id != null) { $filter[] = ['student_id' ,'like' , '%' .$request->f_id. '%'];}
         if($request->f_level && $request->f_level != "all") { $filter[] = ['level' , $request->f_level];}
-        if($request->f_status && $request->f_status != "all") { $filter[] = ['status', $request->f_status];}
+        if($request->f_status != null && $request->f_status != "all") { $filter[] = ['status', $request->f_status];}
         return $filter;
     }
 

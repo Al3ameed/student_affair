@@ -50,6 +50,21 @@
             <input required id="s_date" value="{{ old('dob') }}" type="date" class="form-control" name="dob">
         </div>
 
+        {{-- POB --}}
+        <div class="col-md-6 col-12 mb-3">
+            <label for="pob"> جهة الميلاد </label>
+            <input required id="pob" value="{{ old('pob') }}" type="text" class="form-control" name="pob">
+        </div>
+
+        {{-- Gender  --}}
+        <div class="col-md-6 mb-3 col-12">
+            <label for="s_gender"> النوع </label>
+            <select value="{{ old('gender') }}" required id="s_gender" class="form-control"  name="gender">
+                <option value="0"> ذكر</option>
+                <option value="1"> انثى</option>
+            </select>
+        </div>
+
         {{-- Qualification --}}
         <div class="col-md-6 col-12 mb-3">
             <label for="s_qualification"> المؤهل </label>
@@ -66,17 +81,11 @@
         {{-- Qualification Year  --}}
         <div class="col-md-6 col-12 mb-3">
             <div class="row col-12 mx-0 px-0">
-                <label for="s_q_year_f" class="col-12">  سنه التخرج  ( من - الى )</label>
+                <label for="s_q_year" class="col-12">  سنه التخرج من الثانوية</label>
                 <div class="col">
                     {{-- Qualification Years --}}
-                    <input required placeholder="من" value="{{ old('qualification_year_from') }}" id="s_q_year_f" type="number"
-                        class="form-control" name="qualification_year_from">
-                </div>
-                <div class="col-1 btn btn-light text-center"> / </div>
-                <div class="col">
-                    {{-- Qualification Years --}}
-                    <input required placeholder="الى" value="{{ old('qualification_year_to') }}" id="s_q_year_t" type="number"
-                        class="form-control" name="qualification_year_to">
+                    <input required placeholder="عام التخرج من المرحلة قبل الجامعيه" value="{{ old('qualification_year') }}" id="s_q_year" type="number"
+                        class="form-control" name="qualification_year">
                 </div>
             </div>
         </div>
@@ -84,15 +93,31 @@
         {{-- Grade  --}}
         <div class="col-md-6 col-12 mb-3">
             <label for="s_h_grade"> درجة المؤهل قبل الجامعى </label>
-            <input value="{{ old('secondry_grade') }}" min="1" required id="s_h_grade" type="number" class="form-control" name="secondry_grade">
+            <input value="{{ old('secondry_grade') }}" min="1" step="0.01" required id="s_h_grade" type="number" class="form-control" name="secondry_grade">
         </div>
 
-        {{-- Gender  --}}
-        <div class="col-md-6 mb-3 col-12">
-            <label for="s_gender"> النوع </label>
-            <select value="{{ old('gender') }}" required id="s_gender" class="form-control"  name="gender">
-                <option value="0"> ذكر</option>
-                <option value="1"> انثى</option>
+        {{-- Secondry School  --}}
+        <div class="col-md-6 col-12 mb-3">
+            <label for="secondry_school"> المدرسة الثانوية </label>
+            <input value="{{ old('secondry_school') }}" min="1" required id="secondry_school" type="string" class="form-control" name="secondry_school">
+        </div>
+
+
+        {{-- Medical Exam  --}}
+        <div class="col-md-6 col-12 mb-3">
+            <label for="medical_exam"> الكشف الطبى </label>
+            <select value="{{ old('medical_exam') }}" class="form-control" id="medical_exam"  name="medical_exam">
+                <option value="1" selected> لائق</option>
+                <option value="0"> غير لائق</option>
+            </select>
+        </div>
+
+        {{-- religion Exam  --}}
+        <div class="col-md-6 col-12 mb-3">
+            <label for="religion"> الديانه </label>
+            <select value="{{ old('religion') }}" class="form-control" id="religion"  name="religion">
+                <option value="1" selected> مسلم</option>
+                <option value="0"> مسيحى</option>
             </select>
         </div>
 
@@ -105,6 +130,7 @@
             </select>
         </div>
 
+
          {{-- Level  --}}
          <div class="col-md-6 col-12 mb-3">
             <label for="s_level"> المستوى </label>
@@ -116,26 +142,26 @@
             </select>
         </div>
 
-        {{-- Nationality  --}}
-        <div class="col-md-6 mb-3 col-12">
-            <label for="s_nationality"> الجنسيه </label>
-            <select value="{{ old('nationality') }}" required id="s_nationality" class="form-control"  name="nationality">
-                <option value="0" selected> مصرى</option>
-                <option value="1"> اجنبى</option>
-            </select>
-        </div>
-
-        {{-- National ID  --}}
-        <div class="col-md-6 mb-3 col-12">
-            <label for="s_national_id"> الرقم القومى </label>
-            <input value="{{ old('national_id') }}" type="number" required id="s_national_id" class="form-control"  name="national_id">
-        </div>
-
-        {{-- Phone Number  --}}
-        <div class="col-md-6 mb-3 col-12">
+         {{-- Phone Number  --}}
+         <div class="col-md-6 mb-3 col-12">
             <label for="s_number"> رقم الهاتف </label>
             <input value="{{ old('student_number') }}" type="number" required id="s_number" class="form-control"  name="student_number">
         </div>
+
+
+         {{-- National ID  --}}
+         <div class="col-md-6 mb-3 col-12">
+            <label for="national_id"> الرقم القومى </label>
+            <input value="{{ old('national_id') }}" type="number" required id="national_id" class="form-control"  name="national_id">
+        </div>
+
+
+        {{-- civil registry --}}
+        <div class="col-md-6 mb-3 col-12">
+            <label for="civil_registry"> السجل المدنى </label>
+            <input value="{{ old('civil_registry') }}" type="text" required id="civil_registry" class="form-control"  name="civil_registry">
+        </div>
+
 
         {{-- University Email  --}}
         <div class="col-md-6 mb-3 col-12">
@@ -147,6 +173,22 @@
         <div class="col-md-6 mb-3 col-12">
             <label for="s_image"> الصورة </label>
             <input value="{{ old('img') }}" type="file" onchange="document.getElementById('output').src = window.URL.createObjectURL(this.files[0])" id="s_image" class="form-control"  name="img">
+        </div>
+
+         {{-- Nationality  --}}
+         <div class="col-12 row mx-0 mb-3 col-12">
+            <div class="col-md-6">
+                <label for="s_nationality"> الجنسيه </label>
+                <select onchange="natioanlity_change(this)" value="{{ old('nationality') }}" required id="s_nationality" class="form-control"  name="nationality">
+                    <option value="0" selected> مصرى</option>
+                    <option value="1"> اجنبى</option>
+                </select>
+            </div>
+
+            <div class="col-md-6" id="foreign_nationality" style="display: none;">
+                <label for="foreign_nationality_section"> اسم البلد الأجبنبى </label>
+                <input value="{{ old('foreign_nationality') }}" type="text" id="foreign_nationality_section" class="form-control"  name="foreign_nationality">
+            </div>
         </div>
 
     </div>
@@ -289,6 +331,16 @@
             document.getElementsByClassName("military-exempt-section")[0].style.display = "block";
             document.getElementsByClassName("military-section")[0].style.display = "none";
             document.getElementsByClassName("military-section")[1].style.display = "none";
+        }
+    }
+
+    // when change militart Status
+    function natioanlity_change (status) {
+        var state = document.getElementById("s_nationality").value;
+        if (state == 1) {
+            document.getElementById("foreign_nationality").style.display = "block";
+        } else {
+            document.getElementById("foreign_nationality").style.display = "none";
         }
     }
 </script>
