@@ -81,7 +81,7 @@
                     <span class="mx-1"> <a href="{{ route('students.edit' , $student->id) }}"> <i class="fas fa-edit text-info cursor"></i> </a> </span>
                     <span class="mx-1">
                         <a href="students/{{$student->id}}/manage-grades">
-                            <i class="fas fa-graduation-cap text-dark"></i>
+                            <i class="fas fa-cogs text-dark"></i>
                         </a>
                     </span>
 

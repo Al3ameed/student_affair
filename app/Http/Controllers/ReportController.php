@@ -13,6 +13,7 @@ use App\Exports\Report2Export;
 use App\Exports\Report3Export;
 use App\Exports\Report4Export;
 use App\Exports\Report5Export;
+use App\Exports\Report6Export;
 
 class ReportController extends Controller
 {
@@ -78,6 +79,26 @@ class ReportController extends Controller
         }
         $students = $query->paginate(10);
         return view('pages.reports.military_education', ['students' => $students]);
+    }
+
+    function military_service () {
+        $query = new Student();
+        if(request("f_m_state") != null) {
+            $query = $query->where("military_status" , request("f_m_state"));
+        }
+        if(request("f_level") && request("f_level") != null) {
+            $query = $query->where("level" , request("f_level"));
+        }
+        if(request("f_sort") && request("f_sort") != null) {
+            $query = $query->orderBy("name" ,request('f_sort'));
+        } else {
+            $query = $query->orderBy("name" , "asc");
+        }
+        if(request('excel') && request('excel') != null) {
+            return Excel::download(new Report6Export($query), 'report.xlsx');
+        }
+        $students = $query->paginate(10);
+        return view('pages.reports.military_service', ['students' => $students]);
     }
 
     function student_ages () {

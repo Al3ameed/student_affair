@@ -45,6 +45,14 @@
 
     <!-- Nav Item - Military Education -->
     <li class="nav-item active">
+        <a class="nav-link" href="{{ route('military_service') }}">
+            <i class="fas fa-file-export"></i>
+            <span>تقرير - الخدمة العسكرية </span>
+        </a>
+    </li>
+
+    <!-- Nav Item - Military Education -->
+    <li class="nav-item active">
         <a class="nav-link" href="{{ route('student_ages') }}">
             <i class="fas fa-file-export"></i>
             <span> تقرير - الاعمار </span>

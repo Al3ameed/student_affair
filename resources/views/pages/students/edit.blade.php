@@ -310,13 +310,13 @@
         </div>
 
         {{-- Military Number  --}}
-        <div class="col-md-6 col-12 mb-3 military-section">
+        <div class="col-md-6 col-12 mb-3">
             <label for="s_m_number">رقم قرار الخدمة العسكرية</label>
             <input value="{{ $student->military_number}}" id="s_m_number" type="number"  class="form-control" name="military_number">
         </div>
 
         {{-- Military Date  --}}
-        <div class="col-md-6 col-12 mb-3 military-section">
+        <div class="col-md-6 col-12 mb-3 ">
             <label for="s_m_state">التاريخ  </label>
             <input value="{{ $student->military_date }}" id="s_m_date" type="date" class="form-control" name="military_date">
         </div>

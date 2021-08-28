@@ -78,6 +78,19 @@ class StudentController extends Controller
             'years.*' => 'required|numeric|digits:4' ,
             'gpas' => 'array' ,
             'gpas.*' => 'required|numeric|min:.1|max:4' ,
+
+            'student_Status' => 'array' ,
+            'student_Status.*' => 'nullable|numeric|between:0,2' ,
+
+            'excellence_award' => 'array' ,
+            'excellence_award.*' => 'nullable|numeric|between:0,3' ,
+
+            'excellence_award_recieved' => 'array' ,
+            'excellence_award_recieved.*' => 'nullable|numeric|between:0,1' ,
+
+            'is_success' => 'array' ,
+            'is_success.*' => 'nullable|numeric|between:0,1' ,
+
         ]);
         $student = Student::findOrFail($id);
         $student->grades()->delete();
@@ -86,7 +99,13 @@ class StudentController extends Controller
                 student_grade::Create([
                     'student_id' => $id ,
                     'year' => $request->years[$index] ,
-                    'gpa' => $request->gpas[$index]
+                    'gpa' => $request->gpas[$index],
+
+                    'student_Status' => $request->student_Status[$index],
+                    'excellence_award' => $request->excellence_award[$index],
+                    'excellence_award_recieved' => $request->excellence_award_recieved[$index],
+                    'is_success' => $request->is_success[$index],
+
                 ]);
             }
         }

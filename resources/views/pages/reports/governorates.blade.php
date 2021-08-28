@@ -86,6 +86,8 @@
         <input  type="hidden" name="excel" value="yes">
         <input  type="hidden" name="f_gender" value="{{ request("f_gender") }}">
         <input  type="hidden" name="f_governorate" value="{{ request("f_governorate") }}">
+        <input type="hidden" name="f_sort" value="{{ request("f_sort") }}">
+        <input type="hidden" name="f_level" value="{{ request("f_level") }}">
         <button type="submit" class="btn btn-success"> طباعة التقرير  <i class="fas fa-file-csv ml-2"></i> </button>
     </form>
 

@@ -33,6 +33,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/excellent_students', [ReportController::class , 'excellent_students'])->name("excellent");
     Route::get('/governorates', [ReportController::class , 'governorates'])->name("governorates");
     Route::get('/military_education', [ReportController::class , 'military_education'])->name("military_education");
+    Route::get('/military_service', [ReportController::class , 'military_service'])->name("military_service");
     Route::get('/student_ages', [ReportController::class , 'student_ages'])->name("student_ages");
     Route::get('/foreign_students', [ReportController::class , 'foreign_students'])->name("foreign_students");
 });
