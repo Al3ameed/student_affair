@@ -58,10 +58,19 @@
             <input required id="s_date" value="{{ $student->dob }}" type="date" class="form-control" name="dob">
         </div>
 
-        {{-- POB --}}
-        <div class="col-md-6 col-12 mb-3">
-            <label for="pob"> جهة الميلاد </label>
-            <input required id="pob" value="{{ $student->pob }}" type="text" class="form-control" name="pob">
+         {{-- POB --}}
+         <div class="col-md-6 col-12 mb-3">
+            <div class="col-12 row mx-0 px-0">
+                <div class="col-md-6">
+                    <label for="pob">  جهة الميلاد ( المركز )</label>
+                    <input required id="pob" value="{{$student->pob}}" type="text" class="form-control" name="pob">
+                </div>
+
+                <div class="col-md-6">
+                    <label for="pob_gov">  جهة الميلاد ( المحافظة )</label>
+                    <input required id="pob_gov" value="{{$student->pob_gov}}" type="text" class="form-control" name="pob_gov">
+                </div>
+            </div>
         </div>
 
         {{-- Gender  --}}
@@ -82,7 +91,17 @@
                 <option value="2" {{ $student->qualification == "2" ? "selected": "" }}> ثانوية فنيه</option>
                 <option value="3" {{ $student->qualification == "3" ? "selected": "" }}> الوافدين </option>
                 <option value="4" {{ $student->qualification == "4" ? "selected": "" }}> ستيم </option>
-                <option value="5" {{ $student->qualification == "5" ? "selected": "" }}> اخري </option>
+                <option value="5" {{ $student->qualification == "5" ? "selected": "" }}> السعودية </option>
+                <option value="6" {{ $student->qualification == "6" ? "selected": "" }}> الكويت </option>
+                <option value="7" {{ $student->qualification == "7" ? "selected": "" }}> البحرين </option>
+                <option value="8" {{ $student->qualification == "8" ? "selected": "" }}> السودان </option>
+                <option value="9" {{ $student->qualification == "9" ? "selected": "" }}> الامارات </option>
+                <option value="10" {{ $student->qualification == "10" ? "selected": "" }}> قطر </option>
+                <option value="11" {{ $student->qualification == "11" ? "selected": "" }}> امريكية </option>
+                <option value="12" {{ $student->qualification == "12" ? "selected": "" }}> IG </option>
+                <option value="13" {{ $student->qualification == "13" ? "selected": "" }}> مدارس متفوقين </option>
+                <option value="14" {{ $student->qualification == "14" ? "selected": "" }}> اخري </option>
+
             </select>
         </div>
 
@@ -156,7 +175,16 @@
          {{-- National ID  --}}
          <div class="col-md-6 mb-3 col-12">
             <label for="national_id">الرقم القومى</label>
-            <input value="{{ $student->national_id }}" type="number" required id="national_id" class="form-control"  name="national_id">
+            <input value="{{$student->national_id}}" type="number" required id="national_id" class="form-control"  name="national_id">
+        </div>
+
+        {{-- تاريخ صدور البطاقة  --}}
+        <div class="col-md-6 mb-3 col-12">
+            <label for="national_id_date"> تاريخ صدور البطاقة </label>
+            <input
+                value="{{ $student->national_id_date }}" type="date"
+                required id="national_id_date" class="form-control"
+                name="national_id_date">
         </div>
 
          {{-- civil registry --}}
@@ -169,12 +197,6 @@
         <div class="col-md-6 mb-3 col-12">
             <label for="s_u_main"> البريد الجامعى </label>
             <input value="{{ $student->university_email }}" type="email"  id="s_u_main" class="form-control"  name="university_email">
-        </div>
-
-        {{-- Image  --}}
-        <div class="col-md-6 mb-3 col-12">
-            <label for="s_image"> الصورة </label>
-            <input type="file" onchange="document.getElementById('output').src = window.URL.createObjectURL(this.files[0])" id="s_image" class="form-control"  name="img">
         </div>
 
 
@@ -192,6 +214,12 @@
                 <label for="foreign_nationality_section"> اسم البلد الأجبنبى </label>
                 <input value="{{ $student->foreign_nationality }}" type="text" id="foreign_nationality_section" class="form-control"  name="foreign_nationality">
             </div>
+        </div>
+
+         {{-- Image  --}}
+         <div class="col-md-6 mb-3 col-12">
+            <label for="s_image"> الصورة </label>
+            <input type="file" onchange="document.getElementById('output').src = window.URL.createObjectURL(this.files[0])" id="s_image" class="form-control"  name="img">
         </div>
 
     </div>
@@ -273,23 +301,36 @@
         {{-- Military State --}}
         <div class="col-12 mb-3">
             <label for="s_m_state"> الخدمة العسكريه </label>
-            <select onchange="MilitaryStats(this)" required id="s_m_state" class="form-control"  name="military_status">
+            <select required id="s_m_state" class="form-control"  name="military_status">
                 <option value="1" {{ $student->military_status == "1" ? "selected": "" }}>اعفاء</option>
                 <option value="2" {{ $student->military_status == "2" ? "selected": "" }}> مؤجل</option>
                 <option value="3" {{ $student->military_status == "3" ? "selected": "" }}> تم اداء الخدمة</option>
+                <option value="4" {{ $student->military_status == "4" ? "selected": "" }}> لم يتم تحديد موقفة من التجنيد</option>
             </select>
-        </div>
-
-        {{-- Military Date  --}}
-        <div class="col-md-6 col-12 mb-3 military-section">
-            <label for="s_m_state">تاريخ اداء الخدمة العسكريه</label>
-            <input value="{{ $student->military_date }}" id="s_m_date" type="date" class="form-control" name="military_date">
         </div>
 
         {{-- Military Number  --}}
         <div class="col-md-6 col-12 mb-3 military-section">
             <label for="s_m_number">رقم قرار الخدمة العسكرية</label>
             <input value="{{ $student->military_number}}" id="s_m_number" type="number"  class="form-control" name="military_number">
+        </div>
+
+        {{-- Military Date  --}}
+        <div class="col-md-6 col-12 mb-3 military-section">
+            <label for="s_m_state">التاريخ  </label>
+            <input value="{{ $student->military_date }}" id="s_m_date" type="date" class="form-control" name="military_date">
+        </div>
+
+        {{-- 3 Numbers  --}}
+        <div class="col-md-6 col-12 mb-3">
+            <label for="three_numbers">الرقم الثلاثى  </label>
+            <input value="{{ $student->three_numbers }}" id="three_numbers" type="text"  class="form-control" name="three_numbers">
+        </div>
+
+        {{-- منطقة التجنيد  --}}
+        <div class="col-md-6 col-12 mb-3">
+            <label for="military_location"> منطقة التجنيد </label>
+            <input value="{{ $student->military_location }}" id="military_location" type="text"  class="form-control" name="military_location">
         </div>
 
          {{-- Reason  --}}
@@ -307,11 +348,22 @@
         <div class="col-12 row d-flex justify-content-between mb-3">
             <label class="col"> التربيه العسكريه </label>
             <div class="row d-flex justify-content-between col">
-                <div><input  type="radio" name="military_education" value="1"  {{ $student->military_education == "1" ? "checked" : "" }} > تم اادء التربية العسكريه </div>
+                <div><input  type="radio" name="military_education" value="1"  {{ $student->military_education == "1" ? "checked" : "" }} > تم ادء التربية العسكريه </div>
                 <div><input type="radio" name="military_education" value="0" {{ $student->military_education == "0" ? "checked" : "" }} > لم يتم اداء التربية العسكريه </div>
             </div>
             </select>
         </div>
+
+        {{-- تاريخ التربية العسكريه --}}
+        <div class="col-md-6 col-12 mb-3">
+        <label for="military_education_date"> تاريخ اداء التربية العسكرية </label>
+        <input  id="military_education_date"
+                value="{{ $student->military_education_date }}"
+                type="date"
+                class="form-control"
+                name="military_education_date">
+        </div>
+
     </div>
 
     <div class="row col-12 mx-0 px-0 my-5 justify-content-center">
@@ -323,20 +375,6 @@
 </form>
 
 <script>
-    // when change militart Status
-    function MilitaryStats (status) {
-        var state = document.getElementById("s_m_state").value;
-        if (state == 3) {
-            document.getElementsByClassName("military-exempt-section")[0].style.display = "none";
-            document.getElementsByClassName("military-section")[0].style.display = "block";
-            document.getElementsByClassName("military-section")[1].style.display = "block";
-        } else {
-            document.getElementsByClassName("military-exempt-section")[0].style.display = "block";
-            document.getElementsByClassName("military-section")[0].style.display = "none";
-            document.getElementsByClassName("military-section")[1].style.display = "none";
-        }
-    }
-
     // when change militart Status
     function natioanlity_change (status) {
         var state = document.getElementById("s_nationality").value;

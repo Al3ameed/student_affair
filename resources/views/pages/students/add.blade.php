@@ -52,8 +52,17 @@
 
         {{-- POB --}}
         <div class="col-md-6 col-12 mb-3">
-            <label for="pob"> جهة الميلاد </label>
-            <input required id="pob" value="{{ old('pob') }}" type="text" class="form-control" name="pob">
+            <div class="col-12 row mx-0 px-0">
+                <div class="col-md-6">
+                    <label for="pob">  جهة الميلاد ( المركز )</label>
+                    <input required id="pob" value="{{ old('pob') }}" type="text" class="form-control" name="pob">
+                </div>
+
+                <div class="col-md-6">
+                    <label for="pob_gov">  جهة الميلاد ( المحافظة )</label>
+                    <input required id="pob_gov" value="{{ old('pob_gov') }}" type="text" class="form-control" name="pob_gov">
+                </div>
+            </div>
         </div>
 
         {{-- Gender  --}}
@@ -74,7 +83,16 @@
                 <option value="2"> ثانوية فنيه</option>
                 <option value="3"> الوافدين </option>
                 <option value="4"> ستيم </option>
-                <option value="5"> اخري </option>
+                <option value="5"> السعودية </option>
+                <option value="6"> الكويت </option>
+                <option value="7"> البحرين </option>
+                <option value="8"> السودان </option>
+                <option value="9"> الامارات </option>
+                <option value="10"> قطر </option>
+                <option value="11"> امريكية </option>
+                <option value="12"> IG </option>
+                <option value="13"> مدارس متفوقين </option>
+                <option value="14"> اخري </option>
             </select>
         </div>
 
@@ -149,12 +167,21 @@
         </div>
 
 
-         {{-- National ID  --}}
-         <div class="col-md-6 mb-3 col-12">
+        {{-- National ID  --}}
+        <div class="col-md-6 mb-3 col-12">
             <label for="national_id"> الرقم القومى </label>
             <input value="{{ old('national_id') }}" type="number" required id="national_id" class="form-control"  name="national_id">
         </div>
 
+        {{-- تاريخ صدور البطاقة  --}}
+        <div class="col-md-6 mb-3 col-12">
+            <label for="national_id_date"> تاريخ صدور البطاقة </label>
+            <input
+                type="date"
+                value="{{ old('national_id_date') }}"
+                required id="national_id_date" class="form-control"
+                name="national_id_date">
+        </div>
 
         {{-- civil registry --}}
         <div class="col-md-6 mb-3 col-12">
@@ -167,12 +194,6 @@
         <div class="col-md-6 mb-3 col-12">
             <label for="s_u_main">البريد الجامعى  </label>
             <input value="{{ old('university_email') }}" type="email" id="s_u_main" class="form-control"  name="university_email">
-        </div>
-
-        {{-- Image  --}}
-        <div class="col-md-6 mb-3 col-12">
-            <label for="s_image"> الصورة </label>
-            <input value="{{ old('img') }}" type="file" onchange="document.getElementById('output').src = window.URL.createObjectURL(this.files[0])" id="s_image" class="form-control"  name="img">
         </div>
 
          {{-- Nationality  --}}
@@ -189,6 +210,12 @@
                 <label for="foreign_nationality_section"> اسم البلد الأجبنبى </label>
                 <input value="{{ old('foreign_nationality') }}" type="text" id="foreign_nationality_section" class="form-control"  name="foreign_nationality">
             </div>
+        </div>
+
+         {{-- Image  --}}
+         <div class="col-md-6 mb-3 col-12">
+            <label for="s_image"> الصورة </label>
+            <input value="{{ old('img') }}" type="file" onchange="document.getElementById('output').src = window.URL.createObjectURL(this.files[0])" id="s_image" class="form-control"  name="img">
         </div>
 
     </div>
@@ -270,27 +297,40 @@
         {{-- Military State --}}
         <div class="col-12 mb-3">
             <label for="s_m_state"> الخدمة العسكريه </label>
-            <select value="{{ old('military_status') }}" onchange="MilitaryStats(this)" required id="s_m_state" class="form-control"  name="military_status">
+            <select value="{{ old('military_status') }}"  required id="s_m_state" class="form-control"  name="military_status">
                 <option value="1">اعفاء</option>
                 <option value="2"> مؤجل</option>
                 <option value="3"> تم اداء الخدمة</option>
+                <option value="4"> لم يتم تحديد موقفة من التجنيد</option>
             </select>
         </div>
 
-        {{-- Military Date  --}}
-        <div class="col-md-6 col-12 mb-3 military-section">
-            <label for="s_m_state">تاريخ اداء الخدمة العسكريه </label>
-            <input value="{{ old('military_date') }}" id="s_m_date" type="date" class="form-control" name="military_date">
-        </div>
-
         {{-- Military Number  --}}
-        <div class="col-md-6 col-12 mb-3 military-section">
+        <div class="col-md-6 col-12 mb-3">
             <label for="s_m_number">رقم قرار الخدمة العسكرية </label>
             <input value="{{ old('military_number') }}" id="s_m_number" type="number"  class="form-control" name="military_number">
         </div>
 
+        {{-- Military Date  --}}
+        <div class="col-md-6 col-12 mb-3">
+            <label for="s_m_state"> التاريخ </label>
+            <input value="{{ old('military_date') }}" id="s_m_date" type="date" class="form-control" name="military_date">
+        </div>
+
+        {{-- 3 Numbers  --}}
+        <div class="col-md-6 col-12 mb-3">
+            <label for="three_numbers">الرقم الثلاثى  </label>
+            <input value="{{ old('three_numbers') }}" id="three_numbers" type="text"  class="form-control" name="three_numbers">
+        </div>
+
+        {{-- منطقة التجنيد  --}}
+        <div class="col-md-6 col-12 mb-3">
+            <label for="military_location"> منطقة التجنيد </label>
+            <input value="{{ old('military_location') }}" id="military_location" type="text"  class="form-control" name="military_location">
+        </div>
+
          {{-- Reason  --}}
-         <div class="col-12 mb-3 military-exempt-section">
+         <div class="col-12 mb-3">
             <label for="s_m_reason"> ملاحظات </label>
             <textarea value="{{ old('military_reason') }}" id="s_m_reason" class="form-control" name="military_reason"></textarea>
         </div>
@@ -304,11 +344,21 @@
         <div class="col-12 row d-flex justify-content-between mb-3">
             <label class="col"> التربيه العسكريه </label>
             <div class="row d-flex justify-content-between col">
-                <div><input  type="radio" name="military_education" value="1"  {{ old('military_education') == "1" ? "checked" : (old('military_education') == null ? "checked" : "") }} > تم اادء التربية العسكريه </div>
+                <div><input  type="radio" name="military_education" value="1"  {{ old('military_education') == "1" ? "checked" : (old('military_education') == null ? "checked" : "") }} > تم ادء التربية العسكريه </div>
                 <div><input type="radio" name="military_education" value="0" {{ old('military_education') == "0" ? "checked" : "" }} > لم يتم اداء التربية العسكريه </div>
             </div>
             </select>
         </div>
+
+        {{-- تاريخ التربية العسكريه --}}
+        <div class="col-md-6 col-12 mb-3">
+            <label for="military_education_date"> تاريخ اداء التربية العسكرية </label>
+            <input  id="military_education_date"
+                    type="date"
+                    class="form-control"
+                    name="military_education_date">
+        </div>
+
     </div>
 
     <div class="row col-12 mx-0 px-0 my-5 justify-content-center">
@@ -320,20 +370,6 @@
 </form>
 
 <script>
-    // when change militart Status
-    function MilitaryStats (status) {
-        var state = document.getElementById("s_m_state").value;
-        if (state == 3) {
-            document.getElementsByClassName("military-exempt-section")[0].style.display = "none";
-            document.getElementsByClassName("military-section")[0].style.display = "block";
-            document.getElementsByClassName("military-section")[1].style.display = "block";
-        } else {
-            document.getElementsByClassName("military-exempt-section")[0].style.display = "block";
-            document.getElementsByClassName("military-section")[0].style.display = "none";
-            document.getElementsByClassName("military-section")[1].style.display = "none";
-        }
-    }
-
     // when change militart Status
     function natioanlity_change (status) {
         var state = document.getElementById("s_nationality").value;

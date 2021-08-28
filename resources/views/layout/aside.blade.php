@@ -39,7 +39,7 @@
     <li class="nav-item active">
         <a class="nav-link" href="{{ route('military_education') }}">
             <i class="fas fa-file-export"></i>
-            <span>تقرير - العسكريه </span>
+            <span>تقرير - التربية العسكرية </span>
         </a>
     </li>
 

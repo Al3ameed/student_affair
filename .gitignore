@@ -11,3 +11,6 @@ Homestead.json
 Homestead.yaml
 npm-debug.log
 yarn-error.log
+public/css/date_picker.css
+public/images/students/1629565225.jpg
+public/js/date_picker.js

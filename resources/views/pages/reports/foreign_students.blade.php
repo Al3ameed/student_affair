@@ -13,6 +13,33 @@
     </div>
 @endif
 
+<div class="filter-section bg-light px-0">
+    <form method="get" action="" class="row col-12 mx-0 px-0 d-flex justify-content-start">
+
+        <div class="col-md-3 sol-sm-6  col-sm-6 col-12">
+            <select class="form-control" placeholder="Select Level" class="form-control" name="f_level">
+                <option value="" > جميع المستويات </option>
+                <option value="1" {{ request("f_level") == "1" ? "selected" : "" }}>  المستوى الاول</option>
+                <option value="2" {{ request("f_level") == "2" ? "selected" : "" }}> المستوى الثاني</option>
+                <option value="3" {{ request("f_level") == "3" ? "selected" : "" }}>  المستوى الثالث</option>
+                <option value="4" {{ request("f_level") == "4" ? "selected" : "" }}>  المستوى الرابع</option>
+            </select>
+        </div>
+
+        <div class="col-md-2 sol-sm-6  col-sm-6 col-12">
+            <select class="form-control" placeholder="فلترة" class="form-control" name="f_sort">
+                <option value="" > فلتر </option>
+                <option value="asc" {{ request("f_sort") == "asc" ? "selected" : "" }}>  ابجدى ( أ - ى )</option>
+                <option value="desc" {{ request("f_sort") == "desc" ? "selected" : "" }}>  ابجدى ( ى - أ )</option>
+            </select>
+        </div>
+
+        <div class="col-md-4 sol-sm-6">
+            <button class="btn btn-outline-primary"> بحث</button>
+        </div>
+    </form>
+</div>
+
 <div class="table-responsive">
 
     <form action="" method="get" class="col-12 text-right mb-3">

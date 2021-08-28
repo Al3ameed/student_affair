@@ -17,11 +17,16 @@ class Student extends Model
         'id', 'name', 'dob', 'qualification', 'qualification_year' ,
         'secondry_school' , 'religion' , 'medical_exam' , 'level',
         'civil_registry' , 'pob' , 'foreign_nationality' ,
-        'secondry_grade', 'gender', 'status', 'nationality', 'national_id',
+        'secondry_grade', 'gender', 'status', 'nationality',
         'student_number', 'university_email', 'student_id', 'img', 'father_name',
         'mother_name', 'father_job', 'mother_job', 'Address', 'governorate',
         'military_status', 'military_reason', 'military_date', 'military_number',
-        'military_education'
+        'military_education' ,
+        'military_education_date' ,
+        'pob_gov' ,
+        'three_numbers' ,
+        'military_location' ,
+        'national_id_date' , 'national_id'
     ];
 
     public function grades() {

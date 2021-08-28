@@ -27,7 +27,6 @@ class ReportController extends Controller
                 $q->where("level" , request("f_level"));
             });
         }
-
         if(request('excel') && request('excel') != null) {
             return Excel::download(new Report1Export($query), 'report.xlsx');
         }
@@ -39,12 +38,20 @@ class ReportController extends Controller
     }
 
     function governorates () {
-        $query = Student::OrderBy("governorate" , "desc");
+        $query = new Student();
         if(request("f_gender") != null) {
             $query = $query->where("gender" , request("f_gender"));
         }
         if(request("f_governorate") && request("f_governorate") != null) {
             $query = $query->where("governorate" , request("f_governorate"));
+        }
+        if(request("f_level") && request("f_level") != null) {
+            $query = $query->where("level" , request("f_level"));
+        }
+        if(request("f_sort") && request("f_sort") != null) {
+            $query = $query->orderBy("name" ,request('f_sort'));
+        } else {
+            $query = $query->orderBy("governorate" , "asc");
         }
         if(request('excel') && request('excel') != null) {
             return Excel::download(new Report3Export($query), 'report.xlsx');
@@ -54,9 +61,17 @@ class ReportController extends Controller
     }
 
     function military_education () {
-        $query = Student::OrderBy("student_id" , "desc");
+        $query = new Student();
         if(request("f_m_state") != null) {
             $query = $query->where("military_education" , request("f_m_state"));
+        }
+        if(request("f_level") && request("f_level") != null) {
+            $query = $query->where("level" , request("f_level"));
+        }
+        if(request("f_sort") && request("f_sort") != null) {
+            $query = $query->orderBy("name" ,request('f_sort'));
+        } else {
+            $query = $query->orderBy("name" , "asc");
         }
         if(request('excel') && request('excel') != null) {
             return Excel::download(new Report4Export($query), 'report.xlsx');
@@ -66,10 +81,18 @@ class ReportController extends Controller
     }
 
     function student_ages () {
-        $query = Student::OrderBy("student_id" , "desc");
+        $query = new Student();
         if(request("f_age") != null) {
             $age = Carbon::now()->subYear(request("f_age"))->toDateTimeString();
             $query = $query->where("dob" , "<=" , $age);
+        }
+        if(request("f_level") && request("f_level") != null) {
+            $query = $query->where("level" , request("f_level"));
+        }
+        if(request("f_sort") && request("f_sort") != null) {
+            $query = $query->orderBy("name" ,request('f_sort'));
+        } else {
+            $query = $query->orderBy("name" , "asc");
         }
         if(request('excel') && request('excel') != null) {
             return Excel::download(new Report5Export($query), 'report.xlsx');
@@ -79,7 +102,16 @@ class ReportController extends Controller
     }
 
     function foreign_students () {
-        $query = Student::OrderBy("student_id" , "desc")->where("nationality" , "0");
+        $query = new Student();
+        if(request("f_level") && request("f_level") != null) {
+            $query = $query->where("level" , request("f_level"));
+        }
+        if(request("f_sort") && request("f_sort") != null) {
+            $query = $query->orderBy("name" ,request('f_sort'));
+        } else {
+            $query = $query->orderBy("name" , "asc");
+        }
+        $query = $query->where("nationality" , "1");
         if(request('excel') && request('excel') != null) {
             return Excel::download(new Report2Export($query), 'report.xlsx');
         }
