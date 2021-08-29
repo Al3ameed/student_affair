@@ -44,6 +44,8 @@
 
     <form action="" method="get" class="col-12 text-right mb-3">
         <input type="hidden" name="excel" value="yes">
+        <input type="hidden" name="f_level" value="{{ request("f_level") }}">
+        <input type="hidden" name="f_sort" value="{{ request("f_sort") }}">
         <button  type="submit" class="btn btn-success"> طباعة التقرير  <i class="fas fa-file-csv ml-2"></i> </button>
     </form>
 

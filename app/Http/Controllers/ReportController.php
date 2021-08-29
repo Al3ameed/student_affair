@@ -14,6 +14,7 @@ use App\Exports\Report3Export;
 use App\Exports\Report4Export;
 use App\Exports\Report5Export;
 use App\Exports\Report6Export;
+use App\Exports\Report7Export;
 
 class ReportController extends Controller
 {
@@ -138,5 +139,23 @@ class ReportController extends Controller
         }
         $students = $query->paginate(10);
         return view('pages.reports.foreign_students' ,['students' => $students]);
+    }
+
+    function students_numbers () {
+        $query =  Student::with("latest_grades");
+        if(request("f_level") && request("f_level") != null) {
+            $query = $query->where("level" , request("f_level"));
+        }
+        if(request("f_sort") && request("f_sort") != null) {
+            $query = $query->orderBy("name" ,request('f_sort'));
+        } else {
+            $query = $query->orderBy("name" , "asc");
+        }
+        if(request('excel') && request('excel') != null) {
+            return Excel::download(new Report7Export($query), 'report.xlsx');
+        }
+        $students = $query->paginate(10);
+        $students_number = $students->total();
+        return view('pages.reports.students_numbers' ,['students' => $students , 'students_number' => $students_number]);
     }
 }

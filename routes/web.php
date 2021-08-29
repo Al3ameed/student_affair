@@ -31,6 +31,7 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/update_fees/{id}', [StudentController::class , 'update_fees'])->name("update_fees");
 
     Route::get('/excellent_students', [ReportController::class , 'excellent_students'])->name("excellent");
+    Route::get('/students_numbers', [ReportController::class , 'students_numbers'])->name("students_numbers");
     Route::get('/governorates', [ReportController::class , 'governorates'])->name("governorates");
     Route::get('/military_education', [ReportController::class , 'military_education'])->name("military_education");
     Route::get('/military_service', [ReportController::class , 'military_service'])->name("military_service");

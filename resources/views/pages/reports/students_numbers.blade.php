@@ -3,7 +3,7 @@
 @section('body')
 
 <div class="header my-5">
-    <h3 class=" float-right"> الطلاب الاوائل </h3>
+    <h3 class=" float-right">أعداد الطلاب </h3>
     <div class="clearfix"></div>
 </div>
 
@@ -14,12 +14,9 @@
 @endif
 
 <div class="filter-section bg-light px-0">
-    <form method="get" action="" class="row col-12 mx-0 px-0 d-flex justify-content-start">
-        <div class="col-md-3 sol-sm-6 pl-0 col-sm-6 col-12">
-            <input type="number" placeholder="سنه التقدير"
-             class="form-control" name="f_year" value="{{ request("f_year") }}">
-        </div>
-        <div class="col-md-3 sol-sm-6  col-sm-6 col-12">
+    <form method="get"  class="row col-12 mx-0 px-0 d-flex justify-content-start">
+
+        <div class="col-md-2 sol-sm-6  col-sm-6 col-12">
             <select class="form-control" placeholder="Select Level" class="form-control" name="f_level">
                 <option value="" > جميع المستويات </option>
                 <option value="1" {{ request("f_level") == "1" ? "selected" : "" }}>  المستوى الاول</option>
@@ -28,14 +25,16 @@
                 <option value="4" {{ request("f_level") == "4" ? "selected" : "" }}>  المستوى الرابع</option>
             </select>
         </div>
-        <div class="col-md-3 sol-sm-6  col-sm-6 col-12">
+
+        <div class="col-md-2 sol-sm-6  col-sm-6 col-12">
             <select class="form-control" placeholder="فلترة" class="form-control" name="f_sort">
-                <option value="" > الفلتر </option>
+                <option value="" > فلتر </option>
                 <option value="asc" {{ request("f_sort") == "asc" ? "selected" : "" }}>  ابجدى ( أ - ى )</option>
                 <option value="desc" {{ request("f_sort") == "desc" ? "selected" : "" }}>  ابجدى ( ى - أ )</option>
             </select>
         </div>
-        <div class="col-md-3 sol-sm-6">
+
+        <div class="col-md-4 sol-sm-6">
             <button class="btn btn-outline-primary"> بحث</button>
         </div>
     </form>
@@ -46,37 +45,48 @@
     <form action="" method="get" class="col-12 text-right mb-3">
         <input type="hidden" name="excel" value="yes">
         <input type="hidden" name="f_level" value="{{ request("f_level") }}">
-        <input type="hidden" name="f_year" value="{{ request("f_year") }}">
         <input type="hidden" name="f_sort" value="{{ request("f_sort") }}">
         <button  type="submit" class="btn btn-success"> طباعة التقرير  <i class="fas fa-file-csv ml-2"></i> </button>
     </form>
 
+    <div class="bg bg-primary mb-3 py-2 px-3 text-white ">
+        اجمالى عدد الطلاب  {{ $students_number }}
+    </div>
+
     <table class="table table-light table-striped table-hover">
     <thead>
+        <th> # </th>
         <th> الرقم التعريفى </th>
         <th> اسم الطالب </th>
         <th> البريد الجامعى </th>
-        <th> المستوى  </th>
-        <th> التقدير السنوى  </th>
-        <th>عام التقدير   </th>
+        <th> حالة الطالب </th>
     </thead>
     <tbody>
 
-        @forelse ($grades as $key=>$grade)
+        @forelse ($students as $key=>$student)
             <tr>
-                <td> {{ $grade->student->student_id }}  </td>
-                <td> {{ $grade->student->name }}  </td>
-                <td> {{ $grade->student->university_email }}  </td>
-                <td> {{ $grade->student->level }}  </td>
-                <td >
-                    {{ $grade->gpa }}
-                    @if($key == 0)
-                        <img style="height: 29px;object-fit: contain;" class="ml-2" src="{{ asset('images/static/ranked.png') }}">
+                <td> {{ $student->id }}  </td>
+                <td> {{ $student->student_id }}  </td>
+                <td> {{ $student->name }}  </td>
+                <td> {{ $student->university_email }}  </td>
+                <td>
+                    @if ($student->latest_grades)
+
+                        @if($student->latest_grades->student_Status == 0)
+                            مستجد
+                        @elseif($student->latest_grades->student_Status == 1)
+                            منقول
+                        @elseif($student->latest_grades->student_Status == 2)
+                            مستمر
+                        @else
+                            غير محدد
+                        @endif
+                    @else
+                        غير محددة
                     @endif
                 </td>
-                <td> {{ $grade->year }}  </td>
             </tr>
-            @empty
+        @empty
 
         @endforelse
 
@@ -84,7 +94,7 @@
  </table>
 
  <div class="col-12 row d-flex justify-content-center">
-    {{ $grades->appends($_GET)->links("pagination::bootstrap-4") }}
+    {{ $students->appends($_GET)->links("pagination::bootstrap-4") }}
  </div>
 
 </div>

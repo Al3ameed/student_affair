@@ -27,6 +27,14 @@
         </a>
     </li>
 
+     <!-- Nav Item - Excellent Students -->
+     <li class="nav-item active">
+        <a class="nav-link" href="{{ route('students_numbers') }}">
+            <i class="fas fa-file-export"></i>
+            <span> تقرير - بأعداد الطلاب </span>
+        </a>
+    </li>
+
     <!-- Nav Item - Governorates -->
     <li class="nav-item active">
         <a class="nav-link" href="{{ route('governorates') }}">

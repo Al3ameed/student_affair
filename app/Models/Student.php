@@ -33,6 +33,10 @@ class Student extends Model
         return $this->hasMany(student_grade::class , "student_id" , "id");
     }
 
+    public function latest_grades() {
+        return $this->hasOne(student_grade::class , "student_id" , "id")->OrderBy("year" , "desc")->latest();
+    }
+
     public function getDobAttribute()
     {
         return $this->attributes['dob'];
